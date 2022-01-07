@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="co.MovingCenter.ViewDongSan.ej.service.EjGuestProfileMapper">
+	<select id="selectGuestProfileImg"
+		parameterType="co.MovingCenter.ViewDongSan.comm.service.GuestprofileVO"
+		resultType="co.MovingCenter.ViewDongSan.comm.service.GuestprofileVO">
+		SELECT * FROM GUESTPROFILE WHERE ROOMID = #{roomId}
+	</select>
+</mapper>

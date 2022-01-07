@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="co.MovingCenter.ViewDongSan.dy.service.DyHostMapper">
+	<select id="selectListHost" resultType="co.MovingCenter.ViewDongSan.comm.service.HostVO">
+		select * from host
+	</select>
+
+	<insert id="insertHost" parameterType="co.MovingCenter.ViewDongSan.comm.service.HostVO">
+		insert into host(hostId, hpassword, hname, htel)
+		values(#{hostId},#{hpassword},#{hname},#{htel})
+	</insert>
+	
+</mapper>

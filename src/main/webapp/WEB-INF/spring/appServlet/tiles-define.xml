@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+	<!-- 관리자 링크 -->
+	<definition name="ViewDongSanAdmin.project" template="/WEB-INF/views/tiles/admin/layout.jsp">
+		<put-attribute name="title" value="ViewDongSan admin" />
+		<put-attribute name="header" value="/WEB-INF/views/tiles/admin/header.jsp" />
+		<put-attribute name="menu" value="/WEB-INF/views/tiles/admin/menu.jsp" />
+		<put-attribute name="body" value="" />
+	</definition>
+
+	<!-- 관리자 -->
+	<definition name="ADMIN/*" extends="ViewDongSanAdmin.project">
+		<put-attribute name="body" value="/WEB-INF/views/ADMIN/{1}.jsp" />
+	</definition>
+	
+	<!-- 호스트 링크 -->
+	<definition name="ViewDongSanHost.project" template="/WEB-INF/views/tiles/host/layout.jsp">
+		<put-attribute name="title" value="ViewDongSan Host" />
+		<put-attribute name="header" value="/WEB-INF/views/tiles/host/header.jsp" />
+		<put-attribute name="menu" value="/WEB-INF/views/tiles/host/menu.jsp" />
+		<put-attribute name="body" value="" />
+	</definition>
+
+	<!-- 호스트 -->
+	<definition name="HOST/*" extends="ViewDongSanHost.project">
+		<put-attribute name="body" value="/WEB-INF/views/HOST/{1}.jsp" />
+	</definition>
+	
+	<!-- 게스트 페이지 링크 -->
+	<definition name="ViewDongSan.project" template="/WEB-INF/views/tiles/guest/layout.jsp">
+		<put-attribute name="title" value="ViewDongSan" />
+		<put-attribute name="header" value="/WEB-INF/views/tiles/guest/header.jsp" />
+		<put-attribute name="body" value="" />
+		<put-attribute name="footer" value="/WEB-INF/views/tiles/guest/footer.jsp" />
+	</definition>
+
+	<!-- 게스트 페이지 -->
+	<definition name="GUEST/*" extends="ViewDongSan.project">
+		<put-attribute name="body" value="/WEB-INF/views/GUEST/{1}.jsp" />
+	</definition>
+	
+</tiles-definitions>

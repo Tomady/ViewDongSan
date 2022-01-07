@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper
+	namespace="co.MovingCenter.ViewDongSan.ej.service.EjNoticeMapper">
+	<select id="noticeList"
+	resultType="co.MovingCenter.ViewDongSan.comm.service.NoticeVO">
+		SELECT * FROM NOTICE ORDER BY NO DESC
+	</select>
+	
+	<select id="noticeSelect"
+	parameterType="co.MovingCenter.ViewDongSan.comm.service.NoticeVO"
+	resultType="co.MovingCenter.ViewDongSan.comm.service.NoticeVO">
+		SELECT * FROM NOTICE WHERE NO = #{no}
+	</select>
+	
+	<select id="noticeImgSelect"
+	parameterType="co.MovingCenter.ViewDongSan.comm.service.NoticeVO"
+	resultType="string">
+		SELECT NIMG FROM NOTICE WHERE NO = #{no}
+	</select>
+	
+	<insert id="noticeInsert" 
+	parameterType="co.MovingCenter.ViewDongSan.comm.service.NoticeVO">
+   	<selectKey keyProperty="no" resultType="int" order="BEFORE">
+  		SELECT MAX(NO)+1 FROM NOTICE
+   	</selectKey>
+   		INSERT INTO NOTICE(NO, NTITLE, NSUBJECT, NWDATE,,NIMG )
+      	VALUES(#{no}, #{ntitle}, #{nsubject}, sysdate, #{nimg} )
+   </insert>
+
+	<update id="noticeUpdate"
+	parameterType="co.MovingCenter.ViewDongSan.comm.service.NoticeVO">
+		UPDATE NOTICE SET NSUBJECT = #{nsubject}, NIMG = #{nimg} WHERE NO = #{no}
+	</update>
+	
+	<delete id="noticeDelete"
+	parameterType="co.MovingCenter.ViewDongSan.comm.service.NoticeVO">
+		DELETE NOTICE WHERE NO = #{no}
+	</delete>
+</mapper>

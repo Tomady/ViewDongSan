@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="co.MovingCenter.ViewDongSan.ej.service.EjHostMapper">
+	<select id="hostSelect"
+	resultType="co.MovingCenter.ViewDongSan.comm.service.HostVO"
+	parameterType="co.MovingCenter.ViewDongSan.comm.service.HostVO">
+		SELECT * FROM HOST WHERE HOSTID = #{hostId}
+	</select>
+	
+	<update id="hostUpdate"
+	parameterType="co.MovingCenter.ViewDongSan.comm.service.HostVO">
+		UPDATE HOST
+		SET
+			HPASSWORD = #{hpassword},
+			HNAME = #{hname},
+			HTEL = #{htel},
+			HADDRESS = #{haddress}
+		WHERE HOSTID = #{hostId}
+	</update>
+	
+	<update id="hostDropUpdate"
+	parameterType="co.MovingCenter.ViewDongSan.comm.service.HostVO">
+		UPDATE HOST
+		SET STATUS = 'D'
+		WHERE HOSTID = #{hostId}
+	</update>
+	
+	<update id="hostProfileImgUpdate"
+	parameterType="co.MovingCenter.ViewDongSan.comm.service.HostVO">
+		UPDATE HOST
+		SET HIMG = #{himg}
+		WHERE HOSTID = #{hostId}
+	</update>
+</mapper>

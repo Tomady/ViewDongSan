@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="co.MovingCenter.ViewDongSan.dy.service.DyJoinMapper">
+	<select id="checkId" parameterType="String" resultType="int">
+		select a.id+b.id+c.id
+		from
+		(select count(*) id from host where hostid=#{id}) a,
+		(select count(*) id from guest where guestid=#{id}) b,
+		(select count(*) id from admin where adminid=#{id}) c
+	</select>
+</mapper>

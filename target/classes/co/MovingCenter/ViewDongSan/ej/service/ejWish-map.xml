@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="co.MovingCenter.ViewDongSan.ej.service.EjWishMapper">
+	<insert id="wishInsert" parameterType="co.MovingCenter.ViewDongSan.comm.service.WishVO">
+		INSERT INTO WISHLIST
+		VALUES(#{roomId}, #{roomImg}, #{roomRate}, #{roomdAddress}, #{roomPrice}, #{guestId}, #{roomName})
+	</insert>
+	
+	<delete id="wishDelete" parameterType="co.MovingCenter.ViewDongSan.comm.service.WishVO">
+		DELETE WISHLIST
+		WHERE ROOMID = #{roomId} AND GUESTID = #{guestId}
+	</delete>
+	
+	<select id="wishSelectList" parameterType="co.MovingCenter.ViewDongSan.comm.service.WishVO"
+		resultType="co.MovingCenter.ViewDongSan.comm.service.WishVO">
+		SELECT * FROM WISHLIST
+		WHERE GUESTID = #{guestId}
+	</select>
+	
+	<select id="wishCheck" parameterType="co.MovingCenter.ViewDongSan.comm.service.WishVO" resultType="_int">
+		SELECT COUNT(*) FROM WISHLIST 
+        WHERE GUESTID = #{guestId} AND ROOMID = #{roomId}
+	</select>
+	
+	<select id="alreadyWishInputCheck"
+	parameterType="co.MovingCenter.ViewDongSan.comm.service.WishVO"
+	resultType="co.MovingCenter.ViewDongSan.comm.service.WishVO">
+		SELECT ROOMID FROM WISHLIST WHERE GUESTID = #{guestId}
+	</select>
+</mapper>

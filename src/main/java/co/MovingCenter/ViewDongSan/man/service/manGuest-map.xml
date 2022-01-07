@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="co.MovingCenter.ViewDongSan.man.service.ManGuestMapper">
+	<select id="selectListGuest"
+		resultType="co.MovingCenter.ViewDongSan.comm.service.GuestVO">
+		SELECT * FROM GUEST
+	</select>
+	
+	<delete id="guestDelete" parameterType="co.MovingCenter.ViewDongSan.comm.service.GuestVO">
+		DELETE FROM GUEST WHERE GUESTID = #{guestId}
+	</delete>
+	
+	<select id="selectGuest" resultType="co.MovingCenter.ViewDongSan.comm.service.GuestVO">
+			SELECT * FROM GUEST
+			<![CDATA[  WHERE GUESTID = #{guestId} AND GPASSWORD = #{gpassword} and status <> 'D']]>
+	</select>
+	
+	<select id="selectGuestId" resultType="co.MovingCenter.ViewDongSan.comm.service.GuestVO">
+			SELECT * FROM GUEST WHERE GUESTID = #{guestId}
+	</select>
+</mapper>

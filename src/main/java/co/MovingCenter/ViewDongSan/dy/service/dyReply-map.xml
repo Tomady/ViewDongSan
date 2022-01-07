@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="co.MovingCenter.ViewDongSan.dy.service.DyReplyMapper">
+	<select id="selectList" resultType="co.MovingCenter.ViewDongSan.comm.service.ReplyVO">
+		SELECT * FROM REPLY WHERE ROOMID = #{roomId} ORDER BY GROUPNUM ASC, PARENTNODE ASC, WDATE DESC
+	</select>
+</mapper>

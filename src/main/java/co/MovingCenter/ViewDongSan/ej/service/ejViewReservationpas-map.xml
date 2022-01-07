@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="co.MovingCenter.ViewDongSan.ej.service.EjViewReservationpasMapper">
+	
+	<select id="selectRoomList" parameterType="co.MovingCenter.ViewDongSan.comm.service.ReservationpasVO"
+		resultType="co.MovingCenter.ViewDongSan.comm.service.ReservationpasVO">
+		SELECT DISTINCT ROOMID, ROOMADDRESS, ROOMNAME, ROOMIMG, HOSTID, ROOMRATE, ROOMSUBJECT, ROOMPRICE
+		FROM (SELECT * FROM RESERVATIONPAS
+		WHERE NOT (CHECKIN = #{checkIn} AND CHECKOUT = #{checkOut})
+		UNION
+		SELECT * FROM RESERVATIONPAS
+		WHERE CHECKIN IS NULL)
+	</select>
+</mapper>

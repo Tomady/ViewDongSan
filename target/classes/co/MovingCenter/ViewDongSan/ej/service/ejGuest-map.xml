@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="co.MovingCenter.ViewDongSan.ej.service.EjGuestMapper">
+	<select id="guestSelect"
+	resultType="co.MovingCenter.ViewDongSan.comm.service.GuestVO">
+		SELECT * FROM GUEST WHERE GUESTID = #{guestId}
+	</select>
+	
+	<update id="guestUpdate"
+	parameterType="co.MovingCenter.ViewDongSan.comm.service.GuestVO">
+		UPDATE GUEST 
+		SET 
+			GPASSWORD = #{gpassword}, 
+			GNAME = #{gname},
+			GTEL = #{gtel},
+			GADDRESS = #{gaddress}
+		WHERE GUESTID = #{guestId}
+	</update>
+	
+	<update id="guestDropUpdate"
+	parameterType="co.MovingCenter.ViewDongSan.comm.service.GuestVO">
+		UPDATE GUEST
+		SET STATUS = 'D'
+		WHERE GUESTID = #{guestId}
+	</update>
+	
+	<update id="guestProfileUpdate"
+	parameterType="co.MovingCenter.ViewDongSan.comm.service.GuestVO">
+		UPDATE GUEST
+		SET GIMG = #{gimg}
+		WHERE GUESTID = #{guestId}
+	</update>
+</mapper>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="co.MovingCenter.ViewDongSan.dy.service.DyUsageHistoryMapper">
+	<select id="guestSelectList" resultType="co.MovingCenter.ViewDongSan.comm.service.UsageHistoryVO">
+		SELECT * FROM USAGEHISTORY 
+		WHERE GUESTID = #{guestId}
+		AND <![CDATA[ CHECKIN < TO_DATE(sysdate, 'RR/MM/DD')]]>
+		ORDER BY CHECKIN
+	</select>
+	
+	<select id="hostSelectList" resultType="co.MovingCenter.ViewDongSan.comm.service.UsageHistoryVO">
+		SELECT * FROM USAGEHISTORY WHERE HOSTID = #{hostId} ORDER BY CHECKIN
+	</select>
+
+	<select id="currentList" resultType="co.MovingCenter.ViewDongSan.comm.service.UsageHistoryVO">
+		SELECT * FROM USAGEHISTORY
+		WHERE GUESTID = #{id}
+		AND CHECKIN >= TO_DATE(sysdate, 'RR/MM/DD')
+		AND <![CDATA[ status <> 'D']]>
+	</select>
+</mapper>

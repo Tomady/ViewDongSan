@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="co.MovingCenter.ViewDongSan.man.service.ManChartMapper">
+	
+	<select id="selectListChart" resultType="co.MovingCenter.ViewDongSan.comm.service.ChartVO">
+		SELECT salsedate, money FROM sales
+	</select>
+
+	<select id="selectChart"
+		parameterType="co.MovingCenter.ViewDongSan.comm.service.ChartVO"
+		resultType="co.MovingCenter.ViewDongSan.comm.service.ChartVO">
+		SELECT * FROM SALES WHERE HOSTID = #{hostId}
+	</select>
+
+	<select id="selectHostID" resultType="String">
+		SELECT DISTINCT(HOSTID) FROM SALES ORDER BY 1
+	</select>
+
+	<select id="selectListChartByID"
+		parameterType="co.MovingCenter.ViewDongSan.comm.service.ChartVO"
+		resultType="co.MovingCenter.ViewDongSan.comm.service.ChartVO">
+		SELECT *
+		FROM SALES
+		WHERE HOSTID=#{hostId}
+	</select>
+</mapper>

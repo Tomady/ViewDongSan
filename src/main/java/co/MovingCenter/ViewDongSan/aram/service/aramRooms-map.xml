@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="co.MovingCenter.ViewDongSan.aram.service.AramRoomsService">
+	
+	<select id="roomSelectList" resultType="co.MovingCenter.ViewDongSan.comm.service.RoomsVO">
+		SELECT * FROM ROOMS WHERE HOSTID = #{hostId}
+	</select>
+	
+	<select id="roomSelect" resultType="co.MovingCenter.ViewDongSan.comm.service.RoomsVO">
+		SELECT * FROM ROOMS WHERE ROOMID = #{roomId}
+	</select>
+	
+	<insert id="roomInsert" parameterType="co.MovingCenter.ViewDongSan.comm.service.RoomsVO">
+		<selectKey keyProperty="roomId" resultType="int" order="BEFORE">
+			SELECT MAX(ROOMID) + 1 AS ROOMID FROM ROOMS
+		</selectKey>
+		INSERT INTO ROOMS (ROOMID, ROOMNAME, ROOMADDRESS, ROOMIMG, HOSTID, ROOMSUBJECT, ROOMPRICE )
+		values(#{roomId}, #{roomName}, #{roomAddress}, #{roomImg}, #{hostId}, #{roomSubject}, #{roomPrice} )
+	</insert>
+	
+	<update id="roomUpdate" parameterType="co.MovingCenter.ViewDongSan.comm.service.RoomsVO">
+		UPDATE ROOMS 
+		SET ROOMIMG = #{roomImg}, ROOMNAME = #{roomName}, ROOMSUBJECT = #{roomSubject}, ROOMPRICE = #{roomPrice}, ROOMADDRESS = #{roomAddress}
+		WHERE ROOMID = #{roomId}
+	</update>
+	
+	<delete id="roomDelete" parameterType="co.MovingCenter.ViewDongSan.comm.service.RoomsVO">
+		DELETE FROM ROOMS WHERE ROOMID = #{roomId}
+	</delete>
+</mapper>

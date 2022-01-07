@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="co.MovingCenter.ViewDongSan.man.service.ManAdminMapper">
+
+	<select id="selectAdmin" resultType="co.MovingCenter.ViewDongSan.comm.service.AdminVO">
+		SELECT * FROM ADMIN 
+		WHERE ADMINID = #{adminId} 
+		AND ADMINPASSWORD = #{adminPassword}
+	</select>
+</mapper>

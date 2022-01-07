@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="co.MovingCenter.ViewDongSan.ej.service.EjReviewMapper">
+	<select id="selectRoomReview" parameterType="co.MovingCenter.ViewDongSan.comm.service.ReviewVO"
+		resultType="co.MovingCenter.ViewDongSan.comm.service.ReviewVO">
+		SELECT * FROM REVIEW WHERE ROOMID = #{roomId}
+	</select>
+	
+	<select id="selectRoomRateAVG"
+	resultType="_double"
+	parameterType="co.MovingCenter.ViewDongSan.comm.service.ReviewVO">
+		SELECT AVG(RATE) FROM REVIEW WHERE ROOMID = #{roomId}
+	</select>
+	
+	<select id="selectRoomReviewCount"
+	parameterType="co.MovingCenter.ViewDongSan.comm.service.ReviewVO"
+	resultType="_int">
+		SELECT COUNT(*) FROM REVIEW WHERE ROOMID = #{roomId}
+	</select>
+ 
+</mapper>
